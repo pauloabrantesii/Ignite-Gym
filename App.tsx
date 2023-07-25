@@ -3,6 +3,9 @@ import { NativeBaseProvider } from 'native-base';
 import { useFonts, Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/roboto';
 import { Loading } from '@components/loading/Loading';
 
+import { THEME } from './src/theme/index';
+import { SignIn } from '@screens/Signin';
+
 export default function App() {
   const  [ fontsLoaded ] = useFonts({ Roboto_400Regular, Roboto_700Bold })
 
@@ -10,14 +13,14 @@ export default function App() {
 
   return (
     // se a fonte for carregada mostra o Text se nao for, mostra uma view vazia // 
-    <NativeBaseProvider>
+    <NativeBaseProvider theme={THEME}>
     <StatusBar 
     barStyle="light-content"
     backgroundColor="transparet"
     translucent
     />
        
-       <Loading /> 
+       {fontsLoaded ? <SignIn /> : <Loading /> }
       </NativeBaseProvider>
   );
 }
