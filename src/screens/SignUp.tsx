@@ -1,18 +1,16 @@
-import { useNavigation } from "@react-navigation/native";
 import { VStack, Image, Text, Center, Heading, ScrollView } from "native-base";
-
-import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
-
+import { useNavigation } from "@react-navigation/native";
 import LogoSvg from '@assets/logo.svg';
 import BackgroundImg from '@assets/background.png'
 import { Input } from "@components/Input/input";
 import { Button } from "@components/Button/Button";
 
-export function SignIn(){
-   const navigation = useNavigation<AuthNavigatorRoutesProps>();
+export function SignUp(){
+  
+  const navigation = useNavigation();
 
-   function handleNewAccount(){
-    navigation.navigate('signUp');
+  function handleGoBack(){
+    navigation.goBack();
    }
 
     return (
@@ -38,36 +36,45 @@ export function SignIn(){
 
        <Center>
         <Heading color="gray.100" fontSize="xl" mb={6} fontFamily="heading" >
-            Acesse sua conta
+            Cria sua conta
         </Heading>
 
+        <Input 
+          placeholder="Nome"
+         
+        />
         <Input 
           placeholder="E-mail"
           keyboardType="email-address"
           autoCapitalize="none"
         />
+
         <Input 
           placeholder="Senha"
           secureTextEntry
+          />  
+               
+        <Input 
+          placeholder="Confirme a senha"
+          secureTextEntry
           />
 
-          <Button title="Acessar"/>
+
+
+
+          <Button title="Criar e Acessar"/>
        </Center>
         
-    <Center mt={24}> 
-       <Text color="gray.100" fontSize="sm" mb={3} fontFamily="body">
-         Ainda não tem acesso?
-       </Text>       
- 
 
-        <Button 
-          title="Criar Conta" 
-          variant="outline" 
-          onPress={handleNewAccount}
-          
-          />
-
-    </Center>     
+     <Center mt={24}>
+         <Button 
+           title="Voltar para o login" 
+           variant="outline" 
+           onPress={handleGoBack}
+           />
+      
+    </Center>
+   
 
       </VStack>
     </ScrollView>
